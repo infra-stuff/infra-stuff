@@ -12,8 +12,6 @@ import PersonIcon from "./PersonIcon";
 import AboutSection from "./AboutSection";
 
 export const Layout: FC<{ children: any }> = ({ children }) => {
-	let hosts = ["Eric Gordon", "Wes Mantooth"];
-
 	return (
 		<>
 			{/* <div className="flex flex-row items-center border-b border-slate-200 px-4 h-12 bg-slate-50">
@@ -44,7 +42,7 @@ export const Layout: FC<{ children: any }> = ({ children }) => {
               sizes="(min-width: 1024px) 20rem, (min-width: 640px) 16rem, 12rem"
               priority
             /> */}
-						<div className="bg-white w-72 aspect-square pt-6 border border-slate-300 rounded-2xl shadow-lg flex flex-col space-y-4 px-4">
+						<div className="mx-auto lg:ml-0 cursor-pointer bg-white w-72 aspect-square pt-6 border border-slate-300 rounded-2xl shadow-lg flex flex-col space-y-4 px-4">
 							<h1
 								className="mt-10 text-4xl font-bold bg-gradient-to-r from-indigo-600 to-indigo-200 bg-clip-text"
 								aria-label="A Programmable Workspace for Developers, Site Reliability Engineers, and Infrastructure Teams."
@@ -89,36 +87,35 @@ export const Layout: FC<{ children: any }> = ({ children }) => {
 						</p> */}
 						<p className="mt-3 text-lg font-normal leading-8 text-slate-700">
 							A{" "}
-							<Link
-								href="https://discord.gg/JHc2ZrmaeD"
-								target="_blank"
-								rel="noreferrer"
-							>
-								public Discord server
+							<Link href="https://discord.gg/JHc2ZrmaeD">
+								<a target="_blank" rel="noreferrer">
+									public Discord server
+								</a>
 							</Link>{" "}
 							and <Link href="/listen">podcast</Link> focused on internet
 							infrastructure—industry trends, academic research, startups,{" "}
 							<em>etc</em>.
 						</p>
 					</div>
-					<section className="mt-10 lg:mt-12">
+					<section className="text-center lg:text-left mt-10 lg:mt-12">
 						{/* <div className="text-slate-800 font-black font-mono underline decoration-2 underline-offset-4 decoration-slate-400 decoration-dotted"> */}
 						<div className="text-slate-800 font-black font-mono">Discord</div>
 					</section>
 					<div className="flex flex-row mt-2">
-						<Link
-							className="flex flex-row no-underline hover:no-underline space-x-2 items-center bg-indigo-500 hover:bg-indigo-600 active:bg-indigo-700 text-base text-white hover:text-white px-3 py-2 rounded-md font-medium focus:outline-none focus:ring-4 ring-indigo-300"
-							href="https://discord.gg/JHc2ZrmaeD"
-							target="_blank"
-							rel="noreferrer"
-						>
-							<Image
-								src="/discord-white.svg"
-								alt="Join Discord Channel"
-								width={24}
-								height={24}
-							/>{" "}
-							<div>Join Channel</div>
+						<Link href="https://discord.gg/JHc2ZrmaeD">
+							<a
+								className="cursor-pointer mx-auto lg:ml-0 flex flex-row no-underline hover:no-underline space-x-2 items-center bg-indigo-500 hover:bg-indigo-600 active:bg-indigo-700 text-base text-white hover:text-white px-3 py-2 rounded-md font-medium focus:outline-none focus:ring-4 ring-indigo-300"
+								target="_blank"
+								rel="noreferrer"
+							>
+								<Image
+									src="/discord-white.svg"
+									alt="Join Discord Channel"
+									width={24}
+									height={24}
+								/>{" "}
+								<div>Join Channel</div>
+							</a>
 						</Link>
 					</div>
 					{/* <AboutSection className="mt-12 hidden lg:block flex flex-col space-y-4" /> */}
@@ -131,7 +128,9 @@ export const Layout: FC<{ children: any }> = ({ children }) => {
 							<span className="ml-2.5">Listen</span>
 						</h2> */}
 						{/* <div className="text-slate-800 font-black font-mono underline decoration-2 underline-offset-4 decoration-slate-400 decoration-dotted"> */}
-						<div className="text-slate-800 font-black font-mono">Listen</div>
+						<div className="hidden lg:flex text-slate-800 font-black font-mono">
+							Listen
+						</div>
 
 						<div className="h-px bg-gradient-to-r from-slate-200/0 via-slate-200 to-slate-200/0 lg:hidden" />
 						<ul
@@ -176,7 +175,7 @@ export const Layout: FC<{ children: any }> = ({ children }) => {
 				</div> */}
 				<div className="relative">{children}</div>
 			</main>
-			<footer className="border-t border-slate-200 bg-slate-50 py-10 pb-40 sm:py-16 sm:pb-32 lg:hidden">
+			{/* <footer className="border-t border-slate-200 bg-slate-50 py-10 pb-40 sm:py-16 sm:pb-32 lg:hidden">
 				<div className="mx-auto px-4 sm:px-6 md:max-w-2xl md:px-4">
 					<AboutSection />
 					<h2 className="mt-8 flex items-center font-mono text-sm font-medium leading-7 text-slate-900">
@@ -196,7 +195,7 @@ export const Layout: FC<{ children: any }> = ({ children }) => {
 						))}
 					</div>
 				</div>
-			</footer>
+			</footer> */}
 			<div className="fixed inset-x-0 bottom-0 z-10 lg:left-112 xl:left-104">
 				<AudioPlayer />
 			</div>

@@ -31,10 +31,7 @@ export interface RssItem {
 	enclosures: { url: string; type: string }[];
 }
 
-export default async (url: string): Promise<RssFeed> => {
-	const resp = await fetch(url);
-	const data = await resp.text();
-
+export default async (data: string): Promise<RssFeed> => {
 	const xml = new XMLParser({
 		attributeNamePrefix: "",
 		textNodeName: "$text",

@@ -6,6 +6,7 @@ import Container from "@/components/Container";
 import { Layout } from "@/components/Layout";
 import parseFeed from "@/components/parseFeed";
 import EpisodeEntry from "./EpisodeEntry";
+import { testFeed } from "../api/feed";
 
 export interface Episode {
 	id: string;
@@ -17,7 +18,7 @@ export interface Episode {
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
-	let feed = await parseFeed(`http://localhost:3000/api/feed`);
+	let feed = await parseFeed(testFeed);
 
 	return {
 		props: {
@@ -39,6 +40,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 };
 
 export default function Home({ episodes }: { episodes: Episode[] }) {
+	console.log(episodes);
 	return (
 		<Layout>
 			<Head>

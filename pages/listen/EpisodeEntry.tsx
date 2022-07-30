@@ -25,22 +25,25 @@ const PlayPauseIcon: FC<{ playing: boolean } & React.SVGProps<SVGSVGElement>> = 
 	);
 };
 
-export default function EpisodeEntry({ episode }: { episode: Episode }) {
-	let date = new Date(episode.published);
-
+export default function EpisodeEntry({ episode }: { episode?: Episode }) {
 	let audioPlayerData = useMemo(
 		() => ({
-			title: episode.title,
+			title: episode?.title,
 			audio: {
-				src: episode.audio.src,
-				type: episode.audio.type,
+				src: episode?.audio.src,
+				type: episode?.audio.type,
 			},
-			link: `/${episode.id}`,
+			link: `/${episode?.id}`,
 		}),
 		[episode]
 	);
 	let player = useAudioPlayer(audioPlayerData);
 
+	if (!episode) {
+		return <div />;
+	}
+
+	let date = new Date(episode?.published);
 	return (
 		<article aria-labelledby={`episode-${episode.id}-title`} className="py-10 sm:py-12">
 			<Container>

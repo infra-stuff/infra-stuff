@@ -7,12 +7,12 @@ type Data = {
 
 export default function handler(req: NextApiRequest, res: NextApiResponse<string>) {
 	res.setHeader("Content-Type", "application/xml");
-	res.write(feed);
+	res.write(testFeed);
 	res.status(200);
 	res.end();
 }
 
-const feed = `<?xml version="1.0" encoding="utf-8"?>
+export const testFeed = `<?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
     <channel>
         <title>Infrastructure Stuff</title>
@@ -40,7 +40,7 @@ const feed = `<?xml version="1.0" encoding="utf-8"?>
 <li>We talked about a lot of stuff so there would be a lot of links if we actually edited before putting it out there. <a href="#">Here is a random link instead.</a></li>
 </ul>
 ]]></content:encoded>
-            <enclosure length="0" type="audio/mpeg" url="https://their-side-feed.vercel.app/episode-005.mp3"/>
+            <enclosure length="0" type="audio/mpeg" url="https://www.gutenberg.org/files/10177/10177-m/10177-m-001.mp3"/>
         </item>
         <item>
             <title><![CDATA[Why Infrastructure Stuff?]]></title>
@@ -60,7 +60,7 @@ const feed = `<?xml version="1.0" encoding="utf-8"?>
 <li>We talked about a lot of stuff so there would be a lot of links if we actually edited before putting it out there. <a href="#">Here is a random link instead.</a></li>
 </ul>
 ]]></content:encoded>
-            <enclosure length="0" type="audio/mpeg" url="https://their-side-feed.vercel.app/episode-005.mp3"/>
+            <enclosure length="0" type="audio/mpeg" url="https://www.gutenberg.org/files/10177/10177-m/10177-m-001.mp3"/>
         </item>
     </channel>
 </rss>`;

@@ -9,9 +9,10 @@ import FormattedDate from "@/components/FormattedDate";
 import { Layout } from "@/components/Layout";
 import parseFeed from "@/components/parseFeed";
 import { Episode } from ".";
+import { testFeed } from "../api/feed";
 
 export async function getStaticPaths() {
-	let feed = await parseFeed("http://localhost:3000/api/feed");
+	let feed = await parseFeed(testFeed);
 
 	return {
 		paths: feed.items.map(({ id }) => ({
@@ -24,7 +25,7 @@ export async function getStaticPaths() {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-	let feed = await parseFeed("http://localhost:3000/api/feed");
+	let feed = await parseFeed(testFeed);
 	let episode = feed.items
 		.map(({ id, title, description, content, enclosures, published }) => ({
 			id: id.toString(),

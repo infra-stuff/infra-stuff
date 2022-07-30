@@ -24,8 +24,10 @@ export default function AboutSection(
 				)}
 			>
 				Infra stuff is a{" "}
-				<Link href="https://discord.gg/JHc2ZrmaeD" target="_blank" rel="noreferrer">
-					public Discord server
+				<Link href="https://discord.gg/JHc2ZrmaeD">
+					<a target="_blank" rel="noreferrer">
+						public Discord server
+					</a>
 				</Link>{" "}
 				and <Link href="/listen">podcast</Link> focused on internet infrastructure—industry
 				trends, academic research, startups, <em>etc</em>.
