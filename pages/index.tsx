@@ -1,13 +1,16 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
-import styles from "../styles/Home.module.css";
+import { useRouter } from "next/router";
+import Link from "next/link";
 
 import "@fontsource/ibm-plex-mono/latin.css";
 import "@fontsource/ibm-plex-sans/latin.css";
 import "@fontsource/ibm-plex-serif/latin.css";
 
 const Home: NextPage = () => {
+	const router = useRouter();
+
 	return (
 		<div className="mx-auto my-28">
 			<Head>
@@ -33,8 +36,16 @@ const Home: NextPage = () => {
 							Stuff
 						</h1>
 
-						<div className="text-2xl text-indigo-900 font-normal leading-relaxed">
-							A <a>public Discord server</a> and <a>podcast</a> focused on internet
+						<div className="hero-subheading text-2xl text-indigo-900 font-normal leading-relaxed">
+							A{" "}
+							<Link
+								href="https://discord.gg/JHc2ZrmaeD"
+								target="_blank"
+								rel="noreferrer"
+							>
+								public Discord server
+							</Link>{" "}
+							and <Link href="/listen">podcast</Link> focused on internet
 							infrastructure—industry trends, academic research, startups,{" "}
 							<em>etc</em>.
 						</div>
@@ -45,7 +56,12 @@ const Home: NextPage = () => {
 									Discord
 								</div>
 								<div className="flex flex-row space-x-8 items-center">
-									<button className="flex flex-row space-x-2 items-center bg-indigo-500 hover:bg-indigo-600 active:bg-indigo-700 text-base text-white px-3 py-2 rounded-md font-medium focus:outline-none focus:ring-4 ring-indigo-300">
+									<Link
+										className="flex flex-row no-underline hover:no-underline space-x-2 items-center bg-indigo-500 hover:bg-indigo-600 active:bg-indigo-700 text-base text-white hover:text-white px-3 py-2 rounded-md font-medium focus:outline-none focus:ring-4 ring-indigo-300"
+										href="https://discord.gg/JHc2ZrmaeD"
+										target="_blank"
+										rel="noreferrer"
+									>
 										<Image
 											src="/discord-white.svg"
 											alt="Join Discord Channel"
@@ -53,7 +69,7 @@ const Home: NextPage = () => {
 											height={24}
 										/>{" "}
 										<div>Join Channel</div>
-									</button>
+									</Link>
 								</div>
 							</div>
 							<div className="flex flex-col space-y-4">
@@ -61,7 +77,10 @@ const Home: NextPage = () => {
 									Podcast
 								</div>
 								<div className="flex flex-row space-x-8 items-center">
-									<button className="flex flex-row space-x-2 items-center border border-indigo-800 bg-transparent hover:bg-slate-200 active:bg-slate-300 text-base text-indigo-800 active:text-black px-3 py-2 rounded-md font-medium focus:outline-none focus:ring-4 ring-indigo-300">
+									<Link
+										className="flex flex-row space-x-2 no-underline hover:no-underline items-center border border-indigo-800 bg-transparent hover:bg-slate-200 active:bg-slate-300 text-base text-indigo-800 active:text-black px-3 py-2 rounded-md font-medium focus:outline-none focus:ring-4 ring-indigo-300"
+										href="/listen"
+									>
 										<Image
 											src="/play--filled--alt.svg"
 											alt="Listen to Podcast"
@@ -69,37 +88,37 @@ const Home: NextPage = () => {
 											height={16}
 										/>
 										<div>Listen</div>
-									</button>
+									</Link>
 								</div>
 							</div>
 							<div className="flex flex-col space-y-2">
 								<div className="text-indigo-500 font-medium font-mono underline decoration-2 underline-offset-4 decoration-indigo-400 decoration-dotted">
 									Hosts
 								</div>
-								<a
+								<Link
 									className="text-xl"
 									href="https://twitter.com/martin_casado"
 									target="_blank"
 									rel="noreferrer"
 								>
 									Martin Casado
-								</a>
-								<a
+								</Link>
+								<Link
 									className="text-xl"
 									href="https://twitter.com/tnachen"
 									target="_blank"
 									rel="noreferrer"
 								>
 									Tim Chen
-								</a>
-								<a
+								</Link>
+								<Link
 									className="text-xl"
 									href="https://twitter.com/hausdorff_space"
 									target="_blank"
 									rel="noreferrer"
 								>
 									Alex Clemmer
-								</a>
+								</Link>
 							</div>
 						</div>
 					</div>
