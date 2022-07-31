@@ -21,7 +21,7 @@ export const Layout: FC<{ children: any }> = ({ children }) => {
 				{/* <div className="hidden lg:sticky lg:top-0 lg:flex lg:w-16 lg:flex-none lg:items-center lg:whitespace-nowrap lg:py-12 lg:text-sm lg:leading-7 lg:[writing-mode:vertical-rl]">
 					<span className="font-mono text-slate-500">Hosted by</span>
 					<span className="mt-6 flex gap-6 font-bold text-slate-900">
-						{hosts.map((host, hostIndex) => (
+						{["Martin Casado", "Tim Chen", "Alex Clemmer"].map((host, hostIndex) => (
 							<Fragment key={host}>
 								{hostIndex !== 0 && (
 									<span aria-hidden="true" className="text-slate-400">
@@ -35,56 +35,18 @@ export const Layout: FC<{ children: any }> = ({ children }) => {
 				</div> */}
 				<div className="relative z-10 mx-auto px-4 pb-4 pt-10 sm:px-6 md:max-w-2xl md:px-4 lg:min-h-full lg:flex-auto lg:border-x lg:border-slate-200 lg:py-12 lg:px-8 xl:px-12">
 					<Link href="/" aria-label="Homepage">
-						{/* <Image
-              className="relative mx-auto block w-48 overflow-hidden rounded-lg bg-slate-200 shadow-xl shadow-slate-200 sm:w-64 sm:rounded-xl lg:w-auto lg:rounded-2xl border"
-              src={posterImage}
-              alt=""
-              sizes="(min-width: 1024px) 20rem, (min-width: 640px) 16rem, 12rem"
-              priority
-            /> */}
-						<div className="mx-auto lg:ml-0 cursor-pointer bg-white w-72 aspect-square pt-6 border border-slate-300 rounded-2xl shadow-lg flex flex-col space-y-4 px-4">
-							<h1
-								className="mt-10 text-4xl font-bold bg-gradient-to-r from-indigo-600 to-indigo-200 bg-clip-text"
-								aria-label="A Programmable Workspace for Developers, Site Reliability Engineers, and Infrastructure Teams."
-								style={{
-									WebkitBackgroundClip: "text",
-									backgroundClip: "text",
-									color: "rgba(0,0,0,0);",
-								}}
-							>
-								Infrastructure
-								<br />
-								Stuff
-							</h1>
-							<div className="font-mono font-medium text-slate-600 text-sm">
-								with Martin Casado, Tim Chen,
-								<br />
-								Alex Clemmer
+						<div className="flex flex-row">
+							<div className="mx-auto lg:ml-0 border border-slate-300 rounded-2xl bg-white shadow-xl p-4">
+								<Image
+									className="m-auto"
+									src="/podcast-album-cover.svg"
+									width={288}
+									height={288}
+								/>
 							</div>
 						</div>
-						{/* <div className="absolute inset-0 rounded-lg ring-1 ring-inset ring-black/10 sm:rounded-xl lg:rounded-2xl" /> */}
 					</Link>
-					{/* <div className="mt-10 text-center lg:mt-12 lg:text-left">
-						<p className="mt-3 text-lg font-medium leading-8 text-slate-700">
-							A{" "}
-							<a
-								href="https://discord.gg/JHc2ZrmaeD"
-								target="_blank"
-								rel="noreferrer"
-							>
-								public Discord server
-							</a>{" "}
-							and <a href="/listen">podcast</a> focused on internet
-							infrastructure—industry trends, academic research, startups,{" "}
-							<em>etc</em>.
-						</p>
-					</div> */}
 					<div className="mt-10 text-center lg:mt-12 lg:text-left">
-						{/* <p className="text-xl font-bold text-slate-900">
-							<Link href="/" className="text-slate-800 no-underline">
-								<a className="text-slate-800 no-underline">Infrastructure Stuff</a>
-							</Link>
-						</p> */}
 						<p className="mt-3 text-lg font-normal leading-8 text-slate-700">
 							A{" "}
 							<Link href="https://discord.gg/JHc2ZrmaeD">

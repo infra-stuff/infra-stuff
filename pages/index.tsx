@@ -22,20 +22,12 @@ const Home: NextPage = () => {
 			<main className="flex flex-col space-y-40">
 				<div className="flex flex-col space-y-20">
 					<div className="max-w-4xl mx-auto flex flex-col space-y-12">
-						<h1
-							className="text-8xl font-bold flex-1 bg-gradient-to-r from-indigo-600 to-indigo-200 bg-clip-text"
-							aria-label="A Programmable Workspace for Developers, Site Reliability Engineers, and Infrastructure Teams."
-							style={{
-								WebkitBackgroundClip: "text",
-								backgroundClip: "text",
-								color: "rgba(0,0,0,0);",
-							}}
-						>
-							Infrastructure
-							<br />
-							Stuff
-						</h1>
-
+						<Image
+							src="/infra-stuff-logo.svg"
+							layout="fixed"
+							width={642}
+							height={192}
+						/>
 						<div className="hero-subheading text-2xl text-indigo-900 font-normal leading-relaxed">
 							A{" "}
 							<Link href="https://discord.gg/JHc2ZrmaeD">

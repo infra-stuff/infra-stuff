@@ -44,10 +44,7 @@ export default function Home({ episodes }: { episodes: Episode[] }) {
 	return (
 		<Layout>
 			<Head>
-				<title>
-					Infrastructure Stuff - A public Discord server and podcast focused on internet
-					infrastructure—industry trends, academic research, startups, <em>etc</em>.
-				</title>
+				<title>Infrastructure Stuff - podcast about internet infrastructure</title>
 				<meta
 					name="description"
 					content="A public Discord server and podcast focused on internet
