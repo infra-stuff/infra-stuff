@@ -5,25 +5,7 @@ import { useAudioPlayer } from "@/components/AudioProvider";
 import Container from "@/components/Container";
 import FormattedDate from "@/components/FormattedDate";
 import { Episode } from ".";
-
-const PlayPauseIcon: FC<{ playing: boolean } & React.SVGProps<SVGSVGElement>> = ({
-	playing,
-	...props
-}) => {
-	return (
-		<svg aria-hidden="true" viewBox="0 0 10 10" fill="none" {...props}>
-			{playing ? (
-				<path
-					fillRule="evenodd"
-					clipRule="evenodd"
-					d="M1.496 0a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5H2.68a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5H1.496Zm5.82 0a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5H8.5a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5H7.316Z"
-				/>
-			) : (
-				<path d="M8.25 4.567a.5.5 0 0 1 0 .866l-7.5 4.33A.5.5 0 0 1 0 9.33V.67A.5.5 0 0 1 .75.237l7.5 4.33Z" />
-			)}
-		</svg>
-	);
-};
+import PlayPauseIcon from "./PlayPauseIcon";
 
 export default function EpisodeEntry({ episode }: { episode?: Episode }) {
 	let audioPlayerData = useMemo(
@@ -45,9 +27,9 @@ export default function EpisodeEntry({ episode }: { episode?: Episode }) {
 
 	let date = new Date(episode?.published);
 	return (
-		<article aria-labelledby={`episode-${episode.id}-title`} className="py-10 sm:py-12">
+		<article aria-labelledby={`episode-${episode.id}-title`} className="py-10 sm:py-8">
 			<Container>
-				<div className="flex flex-col items-start">
+				<div className="bg-white border border-slate-300 p-4 rounded-md shadow-xl flex flex-col items-start">
 					<div className="flex flex-row items-center space-x-4">
 						<h2
 							id={`episode-${episode.id}-title`}

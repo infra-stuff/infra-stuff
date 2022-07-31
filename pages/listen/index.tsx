@@ -1,12 +1,12 @@
 import { FC } from "react";
 import Head from "next/head";
 import { GetStaticProps } from "next";
+import Link from "next/link";
 
-import Container from "@/components/Container";
 import { Layout } from "@/components/Layout";
 import parseFeed from "@/components/parseFeed";
-import EpisodeEntry from "./EpisodeEntry";
 import { testFeed } from "../api/feed";
+import Feed from "./Feed";
 
 export interface Episode {
 	id: string;
@@ -39,8 +39,22 @@ export const getStaticProps: GetStaticProps = async (context) => {
 	};
 };
 
+const Choice: FC<{ children: any; selected?: boolean }> = ({ children, selected = false }) => {
+	const colors = selected
+		? "border-indigo-600 text-indigo-600 bg-indigo-50"
+		: "border-slate-300 text-slate-600";
+	return (
+		<button className={`py-1 px-2 border ${colors} rounded text-sm font-semibold`}>
+			{children}
+		</button>
+	);
+};
+
+function classNames(...classes: string[]) {
+	return classes.filter(Boolean).join(" ");
+}
+
 export default function Home({ episodes }: { episodes: Episode[] }) {
-	console.log(episodes);
 	return (
 		<Layout>
 			<Head>
@@ -51,15 +65,21 @@ export default function Home({ episodes }: { episodes: Episode[] }) {
 					infrastructure—industry trends, academic research, startups, etc."
 				/>
 			</Head>
-			<div className="pt-16 pb-12 sm:pb-4 lg:pt-12">
-				<Container>
-					<h1 className="text-2xl font-bold leading-7 text-slate-900">Episodes</h1>
-				</Container>
-				<div className="divide-y divide-slate-200 sm:mt-4 lg:mt-8 lg:border-t lg:border-slate-200">
-					{episodes.map((episode) => (
-						<EpisodeEntry key={episode.id} episode={episode} />
-					))}
+			<div className="flow-root relative pl-8 pr-12">
+				<div className="z-30 sticky top-0 flex flex-row items-center space-x-4 bg-slate-50 mb-8 py-4 border-b border-slate-300">
+					<div className="text-slate-500">Community</div>
+					<span aria-hidden="true" className="font-bold text-slate-400">
+						/
+					</span>
+					<Link
+						// href={`/listen/${episode.id}`}
+						href=""
+						// aria-label={`Show notes for episode ${episode.title}`}
+					>
+						<a className="flex items-center font-bold text-slate-800 leading-6">Feed</a>
+					</Link>
 				</div>
+				<Feed />
 			</div>
 		</Layout>
 	);
