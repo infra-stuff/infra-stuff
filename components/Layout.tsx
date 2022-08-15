@@ -33,7 +33,7 @@ export const Layout: FC<{ children: any }> = ({ children }) => {
 						))}
 					</span>
 				</div> */}
-				<div className="relative z-10 mx-auto px-4 pb-4 pt-10 sm:px-6 md:max-w-2xl md:px-4 lg:min-h-full lg:flex-auto lg:border-x lg:border-slate-200 lg:py-12 lg:px-8 xl:px-12">
+				<div className="relative z-10 mx-auto px-4 pb-4 pt-10 sm:px-6 md:max-w-2xl md:px-4 lg:min-h-full lg:flex-auto lg:py-12 lg:px-8 xl:px-12">
 					<Link href="/" aria-label="Homepage">
 						<div className="flex flex-row">
 							<div className="mx-auto lg:ml-0 border border-slate-300 rounded-2xl bg-white shadow-xl p-4">
@@ -60,7 +60,6 @@ export const Layout: FC<{ children: any }> = ({ children }) => {
 						</p>
 					</div>
 					<section className="text-center lg:text-left mt-10 lg:mt-12">
-						{/* <div className="text-slate-800 font-black font-mono underline decoration-2 underline-offset-4 decoration-slate-400 decoration-dotted"> */}
 						<div className="text-slate-800 font-black font-mono">Discord</div>
 					</section>
 					<div className="flex flex-row mt-2">
@@ -80,16 +79,7 @@ export const Layout: FC<{ children: any }> = ({ children }) => {
 							</a>
 						</Link>
 					</div>
-					{/* <AboutSection className="mt-12 hidden lg:block flex flex-col space-y-4" /> */}
 					<section className="mt-10 lg:mt-12">
-						{/* <h2 className="sr-only flex items-center font-mono text-sm font-medium leading-7 text-slate-900 lg:not-sr-only">
-							<TinyWaveFormIcon
-								colors={["fill-indigo-300", "fill-blue-300"]}
-								className="h-2.5 w-2.5"
-							/>
-							<span className="ml-2.5">Listen</span>
-						</h2> */}
-						{/* <div className="text-slate-800 font-black font-mono underline decoration-2 underline-offset-4 decoration-slate-400 decoration-dotted"> */}
 						<div className="hidden lg:flex text-slate-800 font-black font-mono">
 							Listen
 						</div>
@@ -124,17 +114,7 @@ export const Layout: FC<{ children: any }> = ({ children }) => {
 					</section>
 				</div>
 			</header>
-			<main className="bg-white border-t border-slate-200 lg:relative lg:mb-28 lg:ml-112 lg:border-t-0 xl:ml-104">
-				{/* <Waveform className="absolute left-0 top-0 h-20 w-full" /> */}
-				{/* <div className="z-10 top-0 sticky flex flex-row items-center space-x-4 border-b border-slate-200 pl-36 h-12 bg-slate-50">
-					<span className="text-slate-500 font-extrabold font-mono">
-						Infrastructure Stuff
-					</span>
-					<span aria-hidden="true" className="text-slate-400">
-						/
-					</span>
-					<div>hi</div>
-				</div> */}
+			<main className="bg-slate-50 border-t border-slate-200 lg:relative lg:mb-28 lg:ml-112 lg:border-t-0 xl:ml-104">
 				<div className="relative">{children}</div>
 			</main>
 			{/* <footer className="border-t border-slate-200 bg-slate-50 py-10 pb-40 sm:py-16 sm:pb-32 lg:hidden">
