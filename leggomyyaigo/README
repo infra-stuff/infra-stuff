@@ -1,2 +1,13 @@
+Setup:
+- get token from @casado or @hausdorff
 - npm init
 - npm install discord.js
+
+Installing commands on discord server:
+> node dump-deploy.js
+
+Running dump bot:
+> node dump.js
+
+Dumping a channel from Discord:
+/dump <channelid>
