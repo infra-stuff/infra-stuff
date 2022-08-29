@@ -1,7 +1,26 @@
 const { Client, GatewayIntentBits } = require('discord.js');
 const { token, clientId, guildId } = require('./config.json');
+const { InternalConvexClient, ConvexHttpClient } = require("convex/browser");
+const { origin } = require("./convex.json");
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.MessageContent] });
+
+// CONVEX global initialization
+const convexhttp = new ConvexHttpClient(origin);
+
+console.log("Created new convex http client to origin "+origin);
+
+function sendMessage(chid, msgid, body, username){
+    const res = convexhttp.mutation("sendMessage")(chid,msgid,body,username);
+    res.then(msg_add_success, msg_add_failure);
+}
+
+function msg_add_success () {
+}
+
+function msg_add_failure () {
+    console.log("Failed to add message");
+}
 
 // used for testing without Discord interaction
 // client.once('ready', () => {
@@ -30,7 +49,8 @@ async function fetchAllMessages(channelid, messageid) {
     .fetch({ limit: 1 })
     .then(messagePage => (messagePage.size === 1 ? messagePage.at(0) : null));
 
-  let first_str = message.id + " : " + message.author.username+" : " + message.content;
+
+  messages.push(message);
 
   console.log("getting all messages from channelid "+channelid+" this may take awhile");
 
@@ -59,10 +79,9 @@ async function fetchAllMessages(channelid, messageid) {
   }
   console.log('');
 
-  console.log(first_str);
-
-  for (const message of messages){
-    console.log(message.id + " : " + message.author.username+" : " + message.content);
+  for (const message of messages) {
+    console.log(message.id + " : " + message.author.username + " : " + message.content);
+    sendMessage(channelid, message.id, message.content, message.author.username);
   }
 }
 
