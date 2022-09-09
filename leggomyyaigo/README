@@ -2,7 +2,8 @@ Setup:
 - get token from @casado or @hausdorff
 - npm init
 - npm install discord.js
-- nom install convex
+- npm install convex
+- npm install posix-getopt 
 
 Installing commands on discord server:
 > node dump-deploy.js

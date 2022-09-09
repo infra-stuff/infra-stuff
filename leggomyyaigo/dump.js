@@ -1,18 +1,36 @@
 const { Client, GatewayIntentBits } = require('discord.js');
 const { token, clientId, guildId } = require('./config.json');
 const { InternalConvexClient, ConvexHttpClient } = require("convex/browser");
-const { origin } = require("./convex.json");
+
+const {prodUrl} = require("./convex.json"); 
+const config = {address : prodUrl};
+const convexhttp = new ConvexHttpClient(config);
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.MessageContent] });
 
 // CONVEX global initialization
-const convexhttp = new ConvexHttpClient(origin);
+console.log("Created new convex http client to origin "+config);
 
-console.log("Created new convex http client to origin "+origin);
+const CHUNK = 100;
 
-function sendMessage(chid, msgid, body, username){
-    const res = convexhttp.mutation("sendMessage")(chid,msgid,body,username);
-    res.then(msg_add_success, msg_add_failure);
+async function sendMessage(channelid, messages) {
+
+  console.log("Sending a total of "+messages.length+" messages");
+
+  let sendlist = [];
+
+  for (const message of messages) {
+    sendlist.push([channelid, message.id, message.content, message.author.username]);
+    if (sendlist.length > 100) {
+      console.log("Sending message list to Convex of size " + sendlist.length)
+      const res = convexhttp.mutation("sendMessage")(sendlist);
+      await res.then(msg_add_success, msg_add_failure);
+      sendlist = [];
+    };
+  }
+   console.log("Sending message list to Convex of size " + sendlist.length)
+   const res = convexhttp.mutation("sendMessage")(sendlist);
+   await res.then(msg_add_success, msg_add_failure);
 }
 
 function msg_add_success () {
@@ -79,10 +97,9 @@ async function fetchAllMessages(channelid, messageid) {
   }
   console.log('');
 
-  for (const message of messages) {
-    console.log(message.id + " : " + message.author.username + " : " + message.content);
-    sendMessage(channelid, message.id, message.content, message.author.username);
-  }
+  sendMessage(channelid, messages);
+
+
 }
 
 client.on('interactionCreate', async interaction => {
