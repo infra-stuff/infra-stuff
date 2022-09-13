@@ -14,7 +14,7 @@ export default mutation(async({ db }, msglist) => {
 
 
     // check if this message already exists
-    const checkmsg = await db.table("messages")
+    const checkmsg = await db.table("messages") 
                               .index("by_msgid")
                               .range(q => q.eq("msgid", msgid))
                               .first();
