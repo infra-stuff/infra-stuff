@@ -10,6 +10,10 @@ const commands = [
 				option.setName('messageid')
 			          .setDescription('will dump all messages after his one')
 					  .setRequired(false)),
+	new SlashCommandBuilder().setName('cvxwrite').setDescription('write a string to convex table').addStringOption(option =>
+		option.setName('str')
+			.setDescription('The string to write')
+			.setRequired(true)),
 	new SlashCommandBuilder().setName('syncchannels').setDescription('sync all channel names and IDs to convex'),
 	new SlashCommandBuilder().setName('dark').setDescription('set avatar to dark rajko'),
 	new SlashCommandBuilder().setName('miami').setDescription('set avatar to miami rajko'),

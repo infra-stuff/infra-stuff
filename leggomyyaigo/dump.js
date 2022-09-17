@@ -79,10 +79,9 @@ async function fetch_all_messages(channelid, messageid) {
   }
 
   if(message == null){
-      return;
+      return 0;
   }
     
-
 
   messages.push(message);
 
@@ -113,27 +112,43 @@ async function fetch_all_messages(channelid, messageid) {
   console.log('');
 
   sendMessage(channelid, messages);
-
-
+  return messages.length;
 }
 
-function sync_all_channels() {
+async function sync_all_channels() {
 
   console.log("*** Syncing all text channels and threads");
 
   let chlist = client.channels.cache.values();
   let sendlist = []; 
+  let count = 0;
+
   for (const channel of chlist) {
     //console.log(channel);
     if (channel.type == 0 || channel.type == 11) {
       let str = channel.type + " : " + channel.name + " : " + channel.id;
       console.log(str);
       // sendlist.push([channel.name, channel.id]);
-      fetch_all_messages(channel.id, null);
+      count += await fetch_all_messages(channel.id, null);
     }
   }
 
-  console.log("DOHE!");
+  console.log("DONE! Processed "+count+" messages");
+}
+
+let i_hate_myself = null;
+async function convex_write(interaction, towrite){
+      const res = convexhttp.mutation("discordWrite")(towrite);
+      i_hate_myself = interaction;
+      await res.then(cvx_write_success, cvx_write_failure);
+}
+
+async function cvx_write_success (res) {
+    await i_hate_myself.reply("write succeeded! with id"+res);
+}
+
+function cvx_write_failure () {
+    console.log("Failed to write to Convex");
 }
 
 client.on('interactionCreate', async interaction => {
@@ -151,6 +166,12 @@ client.on('interactionCreate', async interaction => {
     else if (commandName === 'syncchannels') {
         sync_all_channels();
 		await interaction.reply("Syncing all channels");
+  }
+  else if (commandName === 'cvxwrite') {
+        const towrite  = interaction.options.getString('str');
+        console.log("Writing \""+towrite+"\" to convex");
+        convex_write(interaction, towrite);
+		// await interaction.reply("write a string to Convex");
   }
   else if (commandName === 'dark') {
 		await interaction.reply("setting avatar to evil Rajko");
